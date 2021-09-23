@@ -1,0 +1,13 @@
+{
+  "name": "webuntis-ics-sync",
+  "version": "0.1.0",
+  "description": "Syncs webuntis classrooms to ics",
+  "main": "dist/index.js",
+  "repository": "https://github.com/bddvlpr/webuntis-ics-sync",
+  "author": "bddvlpr",
+  "license": "MIT",
+  "private": true,
+  "devDependencies": {
+    "typescript": "^4.4.3"
+  }
+}
