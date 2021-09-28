@@ -24,7 +24,7 @@ export class TimetablesRoute extends CommonRoute {
       .route(`/${this.name}/:classId`)
       .get(async (req: Request, res: Response) => {
         try {
-          validateSession();
+          await validateSession();
 
           let classId: number = parseInt(req.params.classId);
           let lessons: Lesson[] = await untis.getTimetableForRange(

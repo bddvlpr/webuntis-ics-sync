@@ -1,7 +1,8 @@
-import express, { Request, response, Response } from 'express';
+import express, { Request, Response } from 'express';
 import { Server } from '../server';
 import { CommonRoute } from '.';
 import { untis } from '..';
+import { validateSession } from '../util/untis.util';
 
 export class ClassRoute extends CommonRoute {
   constructor(server: Server) {
@@ -12,7 +13,6 @@ export class ClassRoute extends CommonRoute {
     this.server.app
       .route(`/${this.name}`)
       .get(async (req: Request, res: Response) => {
-        validateSession();
         res.status(404).json(await untis.getClasses());
       });
     return this.server.app;
