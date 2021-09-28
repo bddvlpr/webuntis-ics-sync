@@ -1,3 +1,5 @@
+import { untis } from '..';
+
 export function getDateFromUntis(date: string, time?: string): Date {
   if (time) {
     return new Date(
@@ -13,4 +15,11 @@ export function getDateFromUntis(date: string, time?: string): Date {
     parseInt(date.substr(4, 2)),
     parseInt(date.substr(6, 2))
   );
+}
+
+export async function validateSession() {
+  if (!(await untis.validateSession())) {
+    console.warn('Session has expired. Relogging in...');
+    untis.login();
+  }
 }

@@ -24,6 +24,5 @@ export const server: Server = new Server();
     process.env.SERVICE_UNTIS_BASEURL || ''
   );
 
-  await untis.login();
   await server.listen();
 })();
