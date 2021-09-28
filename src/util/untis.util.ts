@@ -20,6 +20,6 @@ export function getDateFromUntis(date: string, time?: string): Date {
 export async function validateSession() {
   if (!(await untis.validateSession())) {
     console.warn('Session has expired. Relogging in...');
-    untis.login();
+    await untis.login();
   }
 }
