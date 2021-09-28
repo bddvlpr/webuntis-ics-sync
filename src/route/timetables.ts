@@ -29,7 +29,7 @@ export class TimetablesRoute extends CommonRoute {
           let classId: number = parseInt(req.params.classId);
           let lessons: Lesson[] = await untis.getTimetableForRange(
             new Date(new Date().setDate(new Date().getDate() - 7)),
-            new Date(new Date().setDate(new Date().getDate() + 14)),
+            new Date(new Date().setDate(new Date().getDate() + 30)),
             classId,
             1
           );
