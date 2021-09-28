@@ -1,5 +1,5 @@
 import { Lesson } from 'webuntis';
-import { EventAttributes } from 'ics';
+import { EventAttributes, GeoCoordinates } from 'ics';
 import { getDateFromUntis } from './untis.util';
 
 export function convertLessonsToEvents(lessons: Lesson[]): EventAttributes[] {
@@ -8,6 +8,26 @@ export function convertLessonsToEvents(lessons: Lesson[]): EventAttributes[] {
     convertedLessons.push(convertLessonToEvent(lessons[lesson]));
   }
   return convertedLessons;
+}
+
+export function getLocationFromRoom(
+  lesson: Lesson
+): GeoCoordinates | undefined {
+  let fullRoom = lesson.ro.map(room => room.name).join(' ');
+  if (fullRoom.includes('ELL')) {
+    return {
+      lat: 51.230195,
+      lon: 4.416088
+    };
+  } else if (fullRoom.includes('NOO')) {
+    return {
+      lat: 51.230266,
+      lon: 4.414185
+    };
+  } else {
+    console.warn('Geo not found! ', fullRoom);
+  }
+  return undefined;
 }
 
 export function convertLessonToEvent(lesson: Lesson): EventAttributes {
@@ -31,6 +51,7 @@ export function convertLessonToEvent(lesson: Lesson): EventAttributes {
     ],
     title: lesson.su.map(subject => subject.longname).join(', '),
     description: `${lesson.lstext || 'No information'}`,
-    location: lesson.ro.map(room => room.name).join(' ')
+    location: lesson.ro.map(room => room.name).join(' '),
+    geo: getLocationFromRoom(lesson)
   };
 }
