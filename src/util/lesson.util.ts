@@ -24,8 +24,6 @@ export function getLocationFromRoom(
       lat: 51.230266,
       lon: 4.414185
     };
-  } else {
-    console.warn('Geo not found! ', fullRoom);
   }
   return undefined;
 }
