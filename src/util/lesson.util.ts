@@ -48,8 +48,13 @@ export function convertLessonToEvent(lesson: Lesson): EventAttributes {
       end.getMinutes()
     ],
     title: lesson.su.map(subject => subject.longname).join(', '),
-    description: `${lesson.lstext || 'No information'}`,
+    description: `${lesson.lstext || 'No information'}\nTeacher: ${lesson.te
+      .map(teacher => teacher.longname)
+      .join(', ')}`,
     location: lesson.ro.map(room => room.name).join(' '),
-    geo: getLocationFromRoom(lesson)
+    geo: getLocationFromRoom(lesson),
+    organizer: {
+      name: lesson.te.map(teacher => teacher.name).join(', ')
+    }
   };
 }
