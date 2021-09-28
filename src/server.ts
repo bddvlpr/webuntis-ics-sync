@@ -21,7 +21,7 @@ export class Server {
   }
 
   public async listen() {
-    const appPort = process.env.EXPRESS_PORT;
+    const appPort = process.env.PORT || process.env.EXPRESS_PORT;
 
     this.app.route('/').get(async (req: Request, res: Response) => {
       res.status(200).json({
