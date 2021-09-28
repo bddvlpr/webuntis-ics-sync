@@ -28,5 +28,8 @@
     "start": "tsc && node dist/index.js",
     "lint": "eslint .",
     "prettier": "prettier --write ."
+  },
+  "engines": {
+    "node": "14.x"
   }
 }
