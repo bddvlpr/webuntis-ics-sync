@@ -54,9 +54,6 @@ export function convertLessonToEvent(lesson: Lesson): EventAttributes {
       .map(subject => subject.id)
       .join(', ')}`,
     location: lesson.ro.map(room => room.name).join(' '),
-    geo: getLocationFromRoom(lesson),
-    organizer: {
-      name: lesson.te.map(teacher => teacher.name).join(', ')
-    }
+    geo: getLocationFromRoom(lesson)
   };
 }
