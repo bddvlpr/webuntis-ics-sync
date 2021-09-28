@@ -12,6 +12,7 @@ export class ClassRoute extends CommonRoute {
     this.server.app
       .route(`/${this.name}`)
       .get(async (req: Request, res: Response) => {
+        validateSession();
         res.status(404).json(await untis.getClasses());
       });
     return this.server.app;
