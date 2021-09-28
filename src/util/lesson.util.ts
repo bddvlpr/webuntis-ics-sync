@@ -50,6 +50,8 @@ export function convertLessonToEvent(lesson: Lesson): EventAttributes {
     title: lesson.su.map(subject => subject.longname).join(', '),
     description: `${lesson.lstext || 'No information'}\nTeacher: ${lesson.te
       .map(teacher => teacher.longname)
+      .join(', ')}\nSubject: ${lesson.su
+      .map(subject => subject.id)
       .join(', ')}`,
     location: lesson.ro.map(room => room.name).join(' '),
     geo: getLocationFromRoom(lesson),
