@@ -11,24 +11,6 @@ export function convertLessonsToEvents(lessons: Lesson[]): EventAttributes[] {
   return convertedLessons;
 }
 
-export function getLocationFromRoom(
-  lesson: Lesson
-): GeoCoordinates | undefined {
-  let fullRoom = lesson.ro.map(room => room.name).join(' ');
-  if (fullRoom.includes('ELL')) {
-    return {
-      lat: 51.230195,
-      lon: 4.416088
-    };
-  } else if (fullRoom.includes('NOO')) {
-    return {
-      lat: 51.230266,
-      lon: 4.414185
-    };
-  }
-  return undefined;
-}
-
 export function convertLessonToEvent(lesson: Lesson): EventAttributes {
   let start = getDateFromUntis(String(lesson.date), String(lesson.startTime));
   let end = getDateFromUntis(String(lesson.date), String(lesson.endTime));
@@ -75,7 +57,6 @@ export function convertLessonToEvent(lesson: Lesson): EventAttributes {
       .map(klass => klass.longname)
       .join(', ')}`,
     location: lesson.ro.map(room => room.name).join(' '),
-    geo: getLocationFromRoom(lesson),
     uid: MD5(hashObject)
   };
 }
