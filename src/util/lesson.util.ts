@@ -36,14 +36,14 @@ export function convertLessonToEvent(lesson: Lesson): EventAttributes {
   return {
     start: [
       start.getFullYear(),
-      start.getMonth(),
+      start.getMonth() < 1 ? 1 : start.getMonth(),
       start.getDate(),
       start.getHours(),
       start.getMinutes()
     ],
     end: [
       end.getFullYear(),
-      end.getMonth(),
+      end.getMonth() < 1 ? 1 : end.getMonth(),
       end.getDate(),
       end.getHours(),
       end.getMinutes()
@@ -52,10 +52,10 @@ export function convertLessonToEvent(lesson: Lesson): EventAttributes {
     description: `${lesson.lstext || 'No information'}\nTeacher: ${lesson.te
       .map(teacher => teacher.longname)
       .join(', ')}\nSubject: ${lesson.su
-      .map(subject => subject.id)
-      .join(', ')}\nClasses: ${lesson.kl
-      .map(klass => klass.longname)
-      .join(', ')}`,
+        .map(subject => subject.id)
+        .join(', ')}\nClasses: ${lesson.kl
+          .map(klass => klass.longname)
+          .join(', ')}`,
     location: lesson.ro.map(room => room.name).join(' '),
     uid: MD5(hashObject)
   };
