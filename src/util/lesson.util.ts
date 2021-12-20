@@ -18,14 +18,14 @@ export function convertLessonToEvent(lesson: Lesson): EventAttributes {
   const hashObject = {
     start: [
       start.getFullYear(),
-      start.getMonth(),
+      start.getMonth() + 1,
       start.getDate(),
       start.getHours(),
       start.getMinutes()
     ],
     end: [
       end.getFullYear(),
-      end.getMonth(),
+      end.getMonth() + 1,
       end.getDate(),
       end.getHours(),
       end.getMinutes()
@@ -36,14 +36,14 @@ export function convertLessonToEvent(lesson: Lesson): EventAttributes {
   return {
     start: [
       start.getFullYear(),
-      start.getMonth() < 1 ? 1 : start.getMonth(),
+      start.getMonth() + 1,
       start.getDate(),
       start.getHours(),
       start.getMinutes()
     ],
     end: [
       end.getFullYear(),
-      end.getMonth() < 1 ? 1 : end.getMonth(),
+      end.getMonth() + 1,
       end.getDate(),
       end.getHours(),
       end.getMinutes()

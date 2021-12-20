@@ -37,14 +37,11 @@ export class TimetablesRoute extends CommonRoute {
           var events = ics.createEvents(convertLessonsToEvents(lessons));
 
           if (events.error) {
-            res.status(500)
-              .json({ success: false, error: events.error })
+            res.status(500).json({ success: false, error: events.error });
             return;
           }
 
-          res
-            .status(200)
-            .send(events.value);
+          res.status(200).send(events.value);
         } catch (e: any) {
           res.status(500).json({
             success: false,

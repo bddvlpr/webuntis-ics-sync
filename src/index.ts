@@ -2,7 +2,6 @@ import dotenv from 'dotenv';
 import WebUntis from 'webuntis';
 import winston, { Logger } from 'winston';
 import { Server } from './server';
-import { getDateFromUntis } from './util/untis.util';
 
 export const logger: Logger = winston.createLogger({
   transports: [new winston.transports.Console()],
